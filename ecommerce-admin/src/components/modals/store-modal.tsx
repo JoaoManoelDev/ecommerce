@@ -2,6 +2,8 @@
 
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { toast } from "react-hot-toast"
+import axios from "axios"
 
 import { Modal } from "@/components/ui/modal"
 import {
@@ -28,8 +30,14 @@ export const StoreModal = () => {
     }
   })
 
-  const onSubmit = (data: NewStoreInput) => {
-    console.log(data)
+  const onSubmit = async (data: NewStoreInput) => {
+    try {
+      const response = await axios.post("/api/stores", data)
+      
+    } catch (error) {
+      console.log("[CREATE_STORE_MODAL]", error)
+      toast.error("Algo deu errado.")
+    }
   }
 
   return (
