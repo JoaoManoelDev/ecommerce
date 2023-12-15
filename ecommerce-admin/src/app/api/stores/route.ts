@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import { auth } from "@clerk/nextjs"
 
-import { prismadb } from "@/lib/prismadbb"
+import { prismadb } from "@/lib/prismadb"
 
 export async function POST(
   request: Response
