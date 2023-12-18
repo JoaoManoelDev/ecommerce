@@ -33,7 +33,7 @@ export const StoreModal = () => {
   const onSubmit = async (data: NewStoreInput) => {
     try {
       const response = await axios.post("/api/stores", data)
-      
+      console.log(response.data)
     } catch (error) {
       console.log("[CREATE_STORE_MODAL]", error)
       toast.error("Algo deu errado.")

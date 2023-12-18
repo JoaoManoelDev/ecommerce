@@ -1,5 +1,15 @@
-import { X } from "lucide-react"
+import {
+  X,
+  Check,
+  ChevronsUpDown,
+  PlusCircle,
+  Store,
+} from "lucide-react"
 
 export const Icons = {
-  x: X
+  x: X,
+  check: Check,
+  chevronsUpDown: ChevronsUpDown,
+  plusCircle: PlusCircle,
+  store: Store
 }
