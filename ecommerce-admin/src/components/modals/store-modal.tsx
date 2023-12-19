@@ -33,7 +33,8 @@ export const StoreModal = () => {
   const onSubmit = async (data: NewStoreInput) => {
     try {
       const response = await axios.post("/api/stores", data)
-      console.log(response.data)
+      
+      window.location.assign(`${response.data.id}`)
     } catch (error) {
       console.log("[CREATE_STORE_MODAL]", error)
       toast.error("Algo deu errado.")
@@ -57,7 +58,7 @@ export const StoreModal = () => {
                 <FormItem>
                   <FormLabel>Nome</FormLabel>
                   <FormControl>
-                    <Input disabled={newStoreForm.formState.isSubmitting} {...field} />
+                    <Input {...field} disabled={newStoreForm.formState.isSubmitting} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
