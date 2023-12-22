@@ -4,6 +4,9 @@ import {
   ChevronsUpDown,
   PlusCircle,
   Store,
+  Trash,
+  Server,
+  Copy,
 } from "lucide-react"
 
 export const Icons = {
@@ -11,5 +14,8 @@ export const Icons = {
   check: Check,
   chevronsUpDown: ChevronsUpDown,
   plusCircle: PlusCircle,
-  store: Store
+  store: Store,
+  trash: Trash,
+  server: Server,
+  copy: Copy,
 }
