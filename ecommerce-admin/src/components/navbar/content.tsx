@@ -13,6 +13,11 @@ export const NavbarContent = ({
 
   const routes = [
     {
+      href: `/${params.storeId}`,
+      label: "Geral",
+      active: pathname === `/${params.storeId}`,
+    },
+    {
       href: `/${params.storeId}/settings`,
       label: "Configurações",
       active: pathname === `/${params.storeId}/settings`,
