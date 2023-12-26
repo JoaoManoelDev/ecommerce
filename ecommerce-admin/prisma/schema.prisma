@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
@@ -18,5 +18,21 @@ model Store {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
+  billboards Billboard[] @relation("StoreToBillboard")
+
   @@map("store")
+}
+
+model Billboard {
+  id         String   @id @default(uuid())
+  label      String
+  image_url  String
+  store_id   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  store Store @relation("StoreToBillboard", fields: [store_id], references: [id])
+
+  @@index([store_id])
+  @@map("billboard")
 }
