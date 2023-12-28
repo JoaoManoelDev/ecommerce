@@ -10,10 +10,9 @@ export async function POST(
     
     const { userId } = auth()
 
-    if (!userId) return NextResponse.json({ message: "Unauthorized." }, { status: 401 })
+    if (!userId) return NextResponse.json({ message: "Unauthenticated." }, { status: 401 })
     
-    const body = await request.json()
-    const { name } = body
+    const { name } = await request.json()
 
     if (!name) return NextResponse.json({ message: "Name is required." }, { status: 400 })
 

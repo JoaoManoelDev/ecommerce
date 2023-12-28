@@ -16,14 +16,13 @@ export async function PATCH(
   try {
     const { userId } = auth()
     
-    if (!userId) return NextResponse.json({ message: "Unauthorized" }, { status: 401 })
+    if (!userId) return NextResponse.json({ message: "Unauthorized." }, { status: 401 })
 
-    if (!params.storeId) NextResponse.json({ message: "Store id is required" }, { status: 400 })
+    if (!params.storeId) NextResponse.json({ message: "Store id is required." }, { status: 400 })
 
-    const body = await request.json()
-    const { name } = body
+    const { name } = await request.json()
 
-    if (!name) NextResponse.json({ message: "Name is required" }, { status: 400 })
+    if (!name) NextResponse.json({ message: "Name is required." }, { status: 400 })
 
     const store = await prismadb.store.updateMany({
       where: {
@@ -50,9 +49,9 @@ export async function DELETE(
   try {
     const { userId } = auth()
     
-    if (!userId) return NextResponse.json({ message: "Unauthorized" }, { status: 401 })
+    if (!userId) return NextResponse.json({ message: "Unauthenticated." }, { status: 401 })
 
-    if (!params.storeId) NextResponse.json({ message: "Store id is required" }, { status: 400 })
+    if (!params.storeId) NextResponse.json({ message: "Store id is required." }, { status: 400 })
 
     await prismadb.store.deleteMany({
       where: {
@@ -61,7 +60,7 @@ export async function DELETE(
       }
     })
 
-    return NextResponse.json({ message: "Store deleted successfully" })
+    return NextResponse.json({ message: "Store deleted successfully." })
 
   } catch (error) {
     console.log("[STORE_DELETE]", error)
