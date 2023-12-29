@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 import { auth } from "@clerk/nextjs"
 
 import { prismadb } from "@/lib/prismadb"
-import { storeBodyValidation } from "../validations/store"
+import { storeBodyValidation } from "@/app/api/validations/store"
 
 export async function POST(
   request: Response
