@@ -18,19 +18,19 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 import { useStoreModalStore } from "@/stores/store-modal-store"
-import { NewStoreInput, newStoreSchema } from "@/lib/validations/store"
+import { StoreInput, storeSchema } from "@/lib/validations/store"
 
 export const StoreModal = () => {
   const { isOpen, onClose } = useStoreModalStore()
 
-  const newStoreForm = useForm<NewStoreInput>({
-    resolver: zodResolver(newStoreSchema),
+  const newStoreForm = useForm<StoreInput>({
+    resolver: zodResolver(storeSchema),
     defaultValues: {
       name: ""
     }
   })
 
-  const onSubmit = async (data: NewStoreInput) => {
+  const onSubmit = async (data: StoreInput) => {
     try {
       const response = await axios.post("/api/stores", data)
       
