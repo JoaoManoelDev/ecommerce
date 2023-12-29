@@ -25,8 +25,8 @@ import { ApiAlert } from "@/components/ui/api-alert"
 import { Icons } from "@/components/icons"
 
 import {
-  UpdateStoreSettingsInput,
-  updateStoreSettingsSchema
+  StoreInput,
+  storeSchema
 } from "@/lib/validations/store"
 import { useOrigin } from "@/hooks/use-origin"
 
@@ -44,11 +44,11 @@ export const SettingsForm = ({
   const origin = useOrigin()
 
   const settingsForm = useForm({
-    resolver: zodResolver(updateStoreSettingsSchema),
+    resolver: zodResolver(storeSchema),
     defaultValues: initialData,
   })
 
-  const onSubmitUpdateStore = async (data: UpdateStoreSettingsInput) => {
+  const onSubmitUpdateStore = async (data: StoreInput) => {
     try {
       await axios.patch(`/api/stores/${params.storeId}`, data)
       router.refresh()
