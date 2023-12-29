@@ -7,6 +7,8 @@ import {
   Trash,
   Server,
   Copy,
+  Plus,
+  ImagePlus,
 } from "lucide-react"
 
 export const Icons = {
@@ -18,4 +20,6 @@ export const Icons = {
   trash: Trash,
   server: Server,
   copy: Copy,
+  plus: Plus,
+  imagePlus: ImagePlus
 }
