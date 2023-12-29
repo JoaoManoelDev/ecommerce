@@ -2,6 +2,7 @@ import { NextResponse } from "next/server"
 import { auth } from "@clerk/nextjs"
 
 import { prismadb } from "@/lib/prismadb"
+import { storeBodyValidation } from "../validations/store"
 
 export async function POST(
   request: Response
@@ -12,9 +13,15 @@ export async function POST(
 
     if (!userId) return NextResponse.json({ message: "Unauthenticated." }, { status: 401 })
     
-    const { name } = await request.json()
+    const body = await request.json()
 
-    if (!name) return NextResponse.json({ message: "Name is required." }, { status: 400 })
+    const validation = storeBodyValidation.safeParse(body)
+
+    if (!validation.success) {
+      return NextResponse.json(validation.error.formErrors.fieldErrors, { status: 400 })
+    }
+
+    const { name } = validation.data
 
     const newStore = await prismadb.store.create({
       data: {
