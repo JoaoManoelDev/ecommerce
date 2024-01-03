@@ -9,6 +9,8 @@ import {
   Copy,
   Plus,
   ImagePlus,
+  MoreHorizontal,
+  Edit,
 } from "lucide-react"
 
 export const Icons = {
@@ -21,5 +23,7 @@ export const Icons = {
   server: Server,
   copy: Copy,
   plus: Plus,
-  imagePlus: ImagePlus
+  imagePlus: ImagePlus,
+  moreHorizontal: MoreHorizontal,
+  edit: Edit,
 }
