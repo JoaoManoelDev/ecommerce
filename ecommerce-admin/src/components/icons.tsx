@@ -11,6 +11,7 @@ import {
   ImagePlus,
   MoreHorizontal,
   Edit,
+  Search,
 } from "lucide-react"
 
 export const Icons = {
@@ -26,4 +27,5 @@ export const Icons = {
   imagePlus: ImagePlus,
   moreHorizontal: MoreHorizontal,
   edit: Edit,
+  search: Search,
 }
