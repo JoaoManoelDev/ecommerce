@@ -6,8 +6,17 @@ import { Icons } from "@/components/icons"
 import { Button } from "@/components/ui/button"
 import { Heading } from "@/components/ui/heading"
 import { Separator } from "@/components/ui/separator"
+import { DataTable } from "@/components/ui/data-table"
 
-export const BillboardClient = () => {
+import { BillboardColumn, billboardColumns } from "./columns"
+
+interface BillboardClientProps {
+  data: BillboardColumn[]
+}
+
+export const BillboardClient = ({
+  data
+}: BillboardClientProps) => {
   const router = useRouter()
   const params = useParams()
 
@@ -15,7 +24,7 @@ export const BillboardClient = () => {
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title="Outdoors (0)"
+          title={`Outdoors (${data.length})`}
           description="Gerenciar outdoors para sua loja"
         />
 
@@ -29,6 +38,8 @@ export const BillboardClient = () => {
       </div>
 
       <Separator />
+      
+      <DataTable searchKey="label" columns={billboardColumns} data={data} />
     </>
   )
 }
