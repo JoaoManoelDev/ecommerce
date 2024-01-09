@@ -61,8 +61,9 @@ export const BillboardForm = ({
         await axios.post(`/api/${params.storeId}/billboards`, data)
       }
 
-      router.refresh()
       toast.success(toastMessage)
+      router.push(`/${params.storeId}/billboards`)
+      router.refresh()
     } catch (error) {
       toast.error("Algo deu errado.")
     }
@@ -72,11 +73,11 @@ export const BillboardForm = ({
     try {
       setIsDeleting(true)
       await axios.delete(`/api/${params.storeId}/billboards/${params.billboardId}`)
-      router.refresh()
       toast.success("Outdoor deletado.")
 
+      router.push(`/${params.storeId}/billboards`)
+      router.refresh()
     } catch (error) {
-      console.log("[DELETE_BILLBOARD_ERROR]", error)
       toast.error("Certifique-se de remover todas e categorias que usam esse outdoor primeiro.")
     } finally {
       setIsDeleting(false)
