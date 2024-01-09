@@ -12,6 +12,8 @@ import {
   MoreHorizontal,
   Edit,
   Search,
+  ChevronRight,
+  Circle
 } from "lucide-react"
 
 export const Icons = {
@@ -28,4 +30,6 @@ export const Icons = {
   moreHorizontal: MoreHorizontal,
   edit: Edit,
   search: Search,
+  chevronRight: ChevronRight,
+  circle: Circle
 }
