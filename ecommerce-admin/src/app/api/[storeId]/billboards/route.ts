@@ -11,7 +11,7 @@ interface RouteParams {
 }
 
 export async function POST(
-  request: Response,
+  request: Request,
   { params }: RouteParams
 ) {
   try {
@@ -58,7 +58,7 @@ export async function POST(
 }
 
 export async function GET(
-  _request: Response,
+  _request: Request,
   { params }: RouteParams
 ) {
   try {

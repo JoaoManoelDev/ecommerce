@@ -5,7 +5,7 @@ import { prismadb } from "@/lib/prismadb"
 import { storeBodyValidation } from "@/app/api/validations/store"
 
 export async function POST(
-  request: Response
+  request: Request
 ) {
   try {
     
