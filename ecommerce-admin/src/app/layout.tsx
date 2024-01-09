@@ -21,14 +21,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <ClerkProvider localization={ptBR}>
-      <html lang="pt-br">
-        <body className={inter.className}>
+    <html lang="pt-br">
+      <body className={inter.className}>
+        <ClerkProvider localization={ptBR}>
           <ToasterProvider />
           <ModalProvider />
           {children}
-        </body>
-      </html>
-    </ClerkProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   )
 }
