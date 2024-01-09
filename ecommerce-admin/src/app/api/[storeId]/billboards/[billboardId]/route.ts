@@ -110,7 +110,7 @@ export async function DELETE(
       }
     })
 
-    return NextResponse.json({ message: "Billboard deleted successfully" }, { status: 204 })
+    return NextResponse.json({ message: "Billboard deleted successfully" }, { status: 200 })
 
   } catch (error) {
     console.log("[BILLBOARD_DELETE]", error)
