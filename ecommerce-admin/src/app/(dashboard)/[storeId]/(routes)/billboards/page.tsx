@@ -3,6 +3,7 @@ import { BillboardColumn } from "./components/columns"
 
 import { prismadb } from "@/lib/prismadb"
 import { dateFormatter } from "@/lib/formatter"
+import { getBillboardsByStoreId } from "@/actions/billboard"
 
 interface BillboardsPageProps {
   params: {
@@ -13,14 +14,7 @@ interface BillboardsPageProps {
 export default async function BillboardsPage({
   params
 }: BillboardsPageProps) {
-  const billboards = await prismadb.billboard.findMany({
-    where: {
-      store_id: params.storeId
-    },
-    orderBy: {
-      created_at: "desc"
-    }
-  })
+  const billboards = await getBillboardsByStoreId(params.storeId)
 
   const formattedBillboards: BillboardColumn[] = billboards.map((billboard) => ({
     id: billboard.id,
