@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation"
 import { auth } from "@clerk/nextjs"
 
-import { prismadb } from "@/lib/prismadb"
+import { getStoreByUserId } from "@/actions/store"
 
 export default async function SetupLayout({
   children
@@ -12,11 +12,7 @@ export default async function SetupLayout({
 
   if (!userId) redirect("/")
 
-  const store = await prismadb.store.findFirst({
-    where: {
-      user_id: userId
-    }
-  })
+  const store = await getStoreByUserId(userId)
 
   if (store) redirect(`/${store.id}`)
 
