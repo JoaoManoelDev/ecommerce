@@ -1,4 +1,4 @@
-import { prismadb } from "@/lib/prismadb"
+import { getStoreById } from "@/actions/store"
 
 interface DashboardPageProps {
   params: {
@@ -9,11 +9,7 @@ interface DashboardPageProps {
 export default async function DashboardPage({
   params
 }: DashboardPageProps) {
-  const store = await prismadb.store.findFirst({
-    where: {
-      id: params.storeId
-    }
-  })
+  const store = await getStoreById(params.storeId)
 
   return (
     <div>
