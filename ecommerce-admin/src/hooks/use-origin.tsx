@@ -7,8 +7,6 @@ export const useOrigin = () => {
 
   const origin = typeof window !== "undefined" && window.location.origin ? window.location.origin : ""
 
-  console.log("Chegue no origin")
-
   if (!mounted) return ""
 
   return origin
