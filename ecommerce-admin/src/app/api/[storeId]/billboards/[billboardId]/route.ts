@@ -16,10 +16,6 @@ export async function GET(
   { params }: RouteParams
 ) {
   try {
-    const { userId } = auth()
-
-    if (!userId) return NextResponse.json({ message: "Unauthenticated." }, { status: 401 })
-
     if (!params.billboardId) NextResponse.json({ message: "Billboard id is required" }, { status: 400 })
 
     const billboard = await prismadb.billboard.findUnique({
