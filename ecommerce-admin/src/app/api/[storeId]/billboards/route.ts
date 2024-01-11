@@ -62,10 +62,6 @@ export async function GET(
   { params }: RouteParams
 ) {
   try {
-    const { userId } = auth()
-
-    if (!userId) return NextResponse.json({ message: "Unauthenticated." }, { status: 401 })
-
     if (!params.storeId) return NextResponse.json({ message: "Store id is required." }, { status: 400 })
 
     const billboards = await prismadb.billboard.findMany({
