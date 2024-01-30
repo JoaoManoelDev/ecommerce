@@ -1,7 +1,9 @@
+"use server"
+
 import { prismadb } from "@/lib/prismadb"
 
 export const getCategoriesByStoreId = async (storeId: string) => {
-  const categories = prismadb.category.findMany({
+  const categories = await prismadb.category.findMany({
     where: {
       store_id: storeId
     },
