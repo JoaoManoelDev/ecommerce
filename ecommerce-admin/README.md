@@ -7,7 +7,7 @@ api / stores / route
   - POST | CREATE A STORE
 
 api / stores / [storeId] / route
-  - PATCH  | EDIT A SPECIFIC STORE
+  - PATCH  | UPDATE A SPECIFIC STORE
   - DELETE | DELETE A SPECIFIC STORE
 
 ## BILLBOARD
@@ -17,7 +17,16 @@ api / [storeId] / billboards / route
 
 api / [storeId] / billboards / [billboardId] / route
   - GET    | FIND A SPECIFIC BILLBOARD
-  - PATCH  | EDIT A BILLBOARD
+  - PATCH  | UPDATE A BILLBOARD
   - DELETE | DELETE BILLBOARD
 
-## Server actions
+## CATEGORY
+api / [storeId] / categories / route
+  - GET  | FIND ALL CATEGORIES FOR SPECIFIC STORE
+  - POST | CREATE A CATEGORY FOR A SPECIFIC ST0RE AND A SPECIFIC BILLBOARD
+ 
+api / [storeId] / categories / [categoryId] / route
+  - GET    | FIND A SPECIFIC CATEGORY BY ID
+  - PATCH  | UPDATE A CATEGORY BY ID
+  - DELETE | DELETE A CATEGORY BY ID
+
