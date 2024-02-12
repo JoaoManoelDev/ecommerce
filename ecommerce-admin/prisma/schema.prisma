@@ -16,7 +16,8 @@ model Store {
   updated_at DateTime @updatedAt
 
   billboards Billboard[] @relation("StoreToBillboard")
-  Category   Category[]  @relation("StoreToCategory")
+  category   Category[]  @relation("StoreToCategory")
+  size       Size[]      @relation("StoreToSize")
 
   @@map("store")
 }
@@ -50,4 +51,18 @@ model Category {
   @@index([store_id])
   @@index([billboard_id])
   @@map("category")
+}
+
+model Size {
+  id         String   @id @default(uuid())
+  name       String
+  value      String
+  store_id   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  store Store @relation("StoreToSize", fields: [store_id], references: [id])
+
+  @@index([store_id])
+  @@map("size")
 }
