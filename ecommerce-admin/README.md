@@ -30,3 +30,12 @@ api / [storeId] / categories / [categoryId] / route
   - PATCH  | UPDATE A CATEGORY BY ID
   - DELETE | DELETE A CATEGORY BY ID
 
+## SIZE
+api / [storeId] / sizes / route
+  - GET  | FIND ALL SIZES FOR SPECIFIC STORE
+  - POST | CREATE A SIZE FOR A SPECIFIC ST0RE
+ 
+api / [storeId] / sizes / [categoryId] / route
+  - GET    | FIND A SPECIFIC SIZE BY ID
+  - PATCH  | UPDATE A SIZE BY ID
+  - DELETE | DELETE A SIZE BY ID
