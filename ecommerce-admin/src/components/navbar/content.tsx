@@ -28,6 +28,11 @@ export const NavbarContent = ({
       active: pathname === `/${params.storeId}/sizes`,
     },
     {
+      href: `/${params.storeId}/colors`,
+      label: "Cores",
+      active: pathname === `/${params.storeId}/colors`,
+    },
+    {
       href: `/${params.storeId}/billboards`,
       label: "Outdoors",
       active: pathname === `/${params.storeId}/billboards`,
