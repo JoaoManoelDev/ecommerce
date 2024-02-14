@@ -87,20 +87,20 @@ model Color {
 }
 
 model Product {
-  id            String   @id @default(uuid())
-  name          String
-  price         Int
-  is_feature    Boolean  @default(false)
-  is_archived   Boolean  @default(false)
-  store_id      String
-  catetegory_id String
-  size_id       String
-  color_id      String
-  created_at    DateTime @default(now())
-  updated_at    DateTime @updatedAt
+  id          String   @id @default(uuid())
+  name        String
+  price       Int
+  is_feature  Boolean  @default(false)
+  is_archived Boolean  @default(false)
+  store_id    String
+  categoryId  String
+  size_id     String
+  color_id    String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 
   store    Store    @relation("StoreToProduct", fields: [store_id], references: [id])
-  category Category @relation("CategoryToProduct", fields: [catetegory_id], references: [id])
+  category Category @relation("CategoryToProduct", fields: [categoryId], references: [id])
   size     Size     @relation(fields: [size_id], references: [id])
   color    Color    @relation(fields: [color_id], references: [id])
 
@@ -108,7 +108,7 @@ model Product {
 
   @@index([color_id])
   @@index([size_id])
-  @@index([catetegory_id])
+  @@index([categoryId])
   @@index([store_id])
   @@map("products")
 }
