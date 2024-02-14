@@ -91,7 +91,7 @@ model Product {
   name          String
   price         Int
   is_feature    Boolean  @default(false)
-  isArchived    Boolean  @default(false)
+  is_archived   Boolean  @default(false)
   store_id      String
   catetegory_id String
   size_id       String
