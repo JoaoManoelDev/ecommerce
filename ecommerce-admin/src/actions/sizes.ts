@@ -1,6 +1,6 @@
 import { prismadb } from "@/lib/prismadb"
 
-export const getSizeByStoreId = async (storeId: string) => {
+export const getSizesByStoreId = async (storeId: string) => {
   const sizes = await prismadb.size.findMany({
     where: {
       store_id: storeId
