@@ -13,7 +13,12 @@ interface CategoryPageProps {
 export default async function CategoryPage({
   params
 }: CategoryPageProps) {
-  const categories = await getCategoriesByStoreId(params.storeId)
+  const categories = await getCategoriesByStoreId({
+    storeId: params.storeId,
+    includes: {
+      billboard: true
+    }
+  })
 
   const clientFormattedCategories = categories.map<CategoryColumn>((category) => ({
     id: category.id,
