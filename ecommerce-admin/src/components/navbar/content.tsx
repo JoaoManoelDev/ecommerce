@@ -18,6 +18,11 @@ export const NavbarContent = ({
       active: pathname === `/${params.storeId}`,
     },
     {
+      href: `/${params.storeId}/products`,
+      label: "Produtos",
+      active: pathname === `/${params.storeId}/products`,
+    },
+    {
       href: `/${params.storeId}/categories`,
       label: "Categorias",
       active: pathname === `/${params.storeId}/categories`,
