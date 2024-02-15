@@ -2,7 +2,7 @@ import { SizeClient } from "./components/client"
 import { SizeColumn } from "./components/columns"
 
 import { dateFormatter } from "@/lib/formatter"
-import { getSizeByStoreId } from "@/actions/sizes"
+import { getSizesByStoreId } from "@/actions/sizes"
 
 interface SizesPageProps {
   params: {
@@ -13,7 +13,7 @@ interface SizesPageProps {
 export default async function SizesPage({
   params
 }: SizesPageProps) {
-  const sizes = await getSizeByStoreId(params.storeId)
+  const sizes = await getSizesByStoreId(params.storeId)
 
   const formattedSizes: SizeColumn[] = sizes.map((size) => ({
     id: size.id,
