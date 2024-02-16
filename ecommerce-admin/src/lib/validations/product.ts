@@ -2,7 +2,7 @@ import * as z from "zod"
 
 export const productSchema = z.object({
   name: z.string().min(3, "O nome deve ter no mínimo 3 caracteres."),
-  images: z.object({ url: z.string() }).array(),
+  images: z.object({ url: z.string() }).array().min(1, "É preciso no mínimo uma imagem."),
   price: z.coerce.number().min(1, "O preço não pode estar vazio."),
   categoryId: z.string().min(1, "O ID da categoria não pode estar vazio."),
   sizeId: z.string().min(1, "O ID do tamanho não pode estar vazio."),
