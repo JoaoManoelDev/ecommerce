@@ -18,7 +18,7 @@ export type ProductColumn = {
 
 export const productColumns: ColumnDef<ProductColumn>[] = [
   {
-    accessorKey: "Name",
+    accessorKey: "name",
     header: "Nome",
   },
   {
