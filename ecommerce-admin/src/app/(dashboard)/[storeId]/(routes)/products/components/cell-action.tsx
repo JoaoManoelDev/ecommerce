@@ -43,7 +43,7 @@ export const CellAction = ({
       toast.success("Produto deletado.")
 
     } catch (error) {
-      toast.error("Certifique-se de remover todas e categorias que usam esse produto primeiro.")
+      toast.error("Algo deu errado.")
     } finally {
       setIsDeleting(false)
       setIsOpen(false)
