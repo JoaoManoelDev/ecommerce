@@ -30,7 +30,7 @@ export default async function ProductsPage({
     price: priceFormatter(product.price),
     category: product.category.name,
     size: product.size.name,
-    color: product.color.name,
+    color: product.color.value,
     createdAt: dateFormatter(product.created_at)
   }))
 
