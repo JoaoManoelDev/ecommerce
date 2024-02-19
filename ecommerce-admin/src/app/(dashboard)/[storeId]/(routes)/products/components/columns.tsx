@@ -24,10 +24,20 @@ export const productColumns: ColumnDef<ProductColumn>[] = [
   {
     accessorKey: "isArchived",
     header: "Arquivado",
+    cell: ({ row }) => (
+      <div className="flex items-center gap-x-2">
+        {row.original.isArchived ? "Sim" : "não"}
+      </div>
+    )
   },
   {
     accessorKey: "isFeature",
     header: "Em destaque",
+    cell: ({ row }) => (
+      <div className="flex items-center gap-x-2">
+        {row.original.isFeature ? "Sim" : "não"}
+      </div>
+    )
   },
   {
     accessorKey: "price",
@@ -49,7 +59,7 @@ export const productColumns: ColumnDef<ProductColumn>[] = [
         <div
           className="w-6 h-6 rounded-full border border-muted-foreground"
           style={{ backgroundColor: row.original.color }}
-          />
+        />
         {row.original.color}
       </div>
     )
