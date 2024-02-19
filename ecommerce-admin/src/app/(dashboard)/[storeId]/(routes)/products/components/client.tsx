@@ -40,7 +40,7 @@ export const ProductClient = ({
 
       <Separator />
       
-      <DataTable searchKey="label" columns={productColumns} data={data} />
+      <DataTable searchKey="name" columns={productColumns} data={data} />
 
       <Heading
         title="API" description="Chamadas de API para produtos"
