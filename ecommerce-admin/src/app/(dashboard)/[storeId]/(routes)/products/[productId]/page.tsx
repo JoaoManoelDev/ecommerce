@@ -34,7 +34,7 @@ export default async function ProductPage({
       colorId: product.color_id,
       sizeId: product.size_id,
       isArchived: product.is_archived,
-      isFeature: product.is_feature,
+      isFeatured: product.is_featured,
       images: product.image.map(image => ({ url: image.url }))
     } as ProductInput
   }

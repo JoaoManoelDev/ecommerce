@@ -7,7 +7,7 @@ export const productSchema = z.object({
   categoryId: z.string().min(1, "O ID da categoria não pode estar vazio."),
   sizeId: z.string().min(1, "O ID do tamanho não pode estar vazio."),
   colorId: z.string().min(1, "O ID da cor não pode estar vazio."),
-  isFeature: z.boolean().default(false).optional(),
+  isFeatured: z.boolean().default(false).optional(),
   isArchived: z.boolean().default(false).optional(),
 })
 

@@ -7,7 +7,7 @@ import { CellAction } from "./cell-action"
 export type ProductColumn = {
   id: string
   name: string
-  isFeature: boolean,
+  isFeatured: boolean,
   isArchived: boolean,
   price: string,
   category: string,
@@ -35,7 +35,7 @@ export const productColumns: ColumnDef<ProductColumn>[] = [
     header: "Em destaque",
     cell: ({ row }) => (
       <div className="flex items-center gap-x-2">
-        {row.original.isFeature ? "Sim" : "não"}
+        {row.original.isFeatured ? "Sim" : "não"}
       </div>
     )
   },

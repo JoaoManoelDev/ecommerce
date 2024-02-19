@@ -47,7 +47,7 @@ export async function POST(
       price,
       sizeId,
       isArchived,
-      isFeature,
+      isFeatured,
     } = validation.data
 
     const priceInCents = price * 100
@@ -60,7 +60,7 @@ export async function POST(
         color_id: colorId,
         size_id: sizeId,
         is_archived: isArchived,
-        is_feature: isFeature,
+        is_featured: isFeatured,
         store_id: params.storeId,
         image: {
           createMany: {
@@ -88,9 +88,8 @@ export async function GET(
   const categoryId = searchParams.get("categoryId") || undefined
   const colorId = searchParams.get("colorId") || undefined
   const sizeId = searchParams.get("sizeId") || undefined
-  const isFeature = searchParams.get("isFeature") || undefined
+  const isFeatured = searchParams.get("isFeatured") || undefined
 
-  console.log("É destaque",isFeature)
 
   try {
     if (!params.storeId) return NextResponse.json({ message: "Store id is required." }, { status: 400 })
@@ -101,7 +100,7 @@ export async function GET(
         category_id: categoryId,
         color_id: colorId,
         size_id: sizeId,
-        is_feature: isFeature ? true : undefined
+        is_featured: isFeatured ? true : undefined
     },
       include: {
         image: true

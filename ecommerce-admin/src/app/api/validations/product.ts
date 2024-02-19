@@ -7,6 +7,6 @@ export const productBodyValidation = z.object({
   categoryId: z.string().min(1, "The category ID must not be empty."),
   sizeId: z.string().min(1, "The size ID must not be empty."),
   colorId: z.string().min(1, "The color ID cannot be empty."),
-  isFeature: z.boolean().default(false).optional(),
+  isFeatured: z.boolean().default(false).optional(),
   isArchived: z.boolean().default(false).optional(),
 })

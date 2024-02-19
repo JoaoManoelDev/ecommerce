@@ -65,7 +65,7 @@ export async function PATCH(
       price,
       sizeId,
       isArchived,
-      isFeature,
+      isFeatured,
     } = validation.data
 
     const storeExists = prismadb.store.findFirst({
@@ -90,7 +90,7 @@ export async function PATCH(
         color_id: colorId,
         size_id: sizeId,
         is_archived: isArchived,
-        is_feature: isFeature,
+        is_featured: isFeatured,
         store_id: params.storeId,
         image: {
           deleteMany: {}
