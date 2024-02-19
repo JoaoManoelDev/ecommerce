@@ -90,7 +90,7 @@ model Product {
   id          String   @id @default(uuid())
   name        String
   price       Int
-  is_feature  Boolean  @default(false)
+  is_featured Boolean  @default(false)
   is_archived Boolean  @default(false)
   store_id    String
   category_id String
