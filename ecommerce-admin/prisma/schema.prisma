@@ -20,6 +20,7 @@ model Store {
   size       Size[]      @relation("StoreToSize")
   color      Color[]     @relation("StoreToColor")
   store      Product[]   @relation("StoreToProduct")
+  order      Order[]     @relation("StoreToOrder")
 
   @@map("store")
 }
@@ -104,7 +105,8 @@ model Product {
   size     Size     @relation(fields: [size_id], references: [id])
   color    Color    @relation(fields: [color_id], references: [id])
 
-  image Image[]
+  image     Image[]
+  orderItem OrderItem[]
 
   @@index([color_id])
   @@index([size_id])
@@ -124,4 +126,33 @@ model Image {
 
   @@index([product_id])
   @@map("image")
+}
+
+model OrderItem {
+  id        String @id @default(uuid())
+  orderId   String
+  productId String
+
+  product Product @relation(fields: [productId], references: [id])
+  order   Order   @relation(fields: [orderId], references: [id])
+
+  @@index([orderId])
+  @@index([productId])
+  @@map("order_item")
+}
+
+model Order {
+  id          String      @id @default(uuid())
+  store_id    String
+  order_items OrderItem[]
+  isPaid      Boolean
+  phone       String      @default("")
+  address     String      @default("")
+  created_at  DateTime    @default(now())
+  updated_at  DateTime    @updatedAt
+
+  store Store @relation("StoreToOrder", fields: [store_id], references: [id])
+
+  @@index([store_id])
+  @@map("order")
 }
