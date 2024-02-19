@@ -20,32 +20,32 @@ export const NavbarContent = ({
     {
       href: `/${params.storeId}/products`,
       label: "Produtos",
-      active: pathname === `/${params.storeId}/products`,
+      active: RegExp(`^/${params.storeId}/products(?:/.*)?$`).test(pathname),
     },
     {
       href: `/${params.storeId}/categories`,
       label: "Categorias",
-      active: pathname === `/${params.storeId}/categories`,
+      active: RegExp(`^/${params.storeId}/categories(?:/.*)?$`).test(pathname),
     },
     {
       href: `/${params.storeId}/sizes`,
       label: "Tamanhos",
-      active: pathname === `/${params.storeId}/sizes`,
+      active: RegExp(`^/${params.storeId}/sizes(?:/.*)?$`).test(pathname),
     },
     {
       href: `/${params.storeId}/colors`,
       label: "Cores",
-      active: pathname === `/${params.storeId}/colors`,
+      active: RegExp(`^/${params.storeId}/colors(?:/.*)?$`).test(pathname),
     },
     {
       href: `/${params.storeId}/billboards`,
       label: "Outdoors",
-      active: pathname === `/${params.storeId}/billboards`,
+      active: RegExp(`^/${params.storeId}/billboards(?:/.*)?$`).test(pathname),
     },
     {
       href: `/${params.storeId}/settings`,
       label: "Configurações",
-      active: pathname === `/${params.storeId}/settings`,
+      active: RegExp(`^/${params.storeId}/settings(?:/.*)?$`).test(pathname),
     }
   ]
 
