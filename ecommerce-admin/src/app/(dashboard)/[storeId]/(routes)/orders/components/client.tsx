@@ -16,8 +16,8 @@ export const OrderClient = ({
   return (
     <>
       <Heading
-        title={`Pagamentos (${data.length})`}
-        description="Gerenciar pagamentos da sua loja"
+        title={`Pedidos (${data.length})`}
+        description="Gerenciar pedidos da sua loja"
       />
 
 
