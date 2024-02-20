@@ -36,7 +36,7 @@ export const getProductByStoreId = async ({
   return products
 }
 
-interface getProductByIdProps {
+interface GetProductByIdProps {
   productId: string
   includes?: {
     image?: boolean
@@ -49,7 +49,7 @@ export const getProductById = async ({
     image: false,
 
   }
-}: getProductByIdProps) => {
+}: GetProductByIdProps) => {
   const { image } = includes
 
   const product = await prismadb.product.findUnique({
