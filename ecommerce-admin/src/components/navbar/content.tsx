@@ -43,6 +43,11 @@ export const NavbarContent = ({
       active: RegExp(`^/${params.storeId}/billboards(?:/.*)?$`).test(pathname),
     },
     {
+      href: `/${params.storeId}/orders`,
+      label: "Pedidos",
+      active: RegExp(`^/${params.storeId}/orders(?:/.*)?$`).test(pathname),
+    },
+    {
       href: `/${params.storeId}/settings`,
       label: "Configurações",
       active: RegExp(`^/${params.storeId}/settings(?:/.*)?$`).test(pathname),
