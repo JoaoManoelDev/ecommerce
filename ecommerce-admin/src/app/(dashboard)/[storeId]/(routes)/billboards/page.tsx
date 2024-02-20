@@ -1,7 +1,6 @@
 import { BillboardClient } from "./components/client"
 import { BillboardColumn } from "./components/columns"
 
-import { prismadb } from "@/lib/prismadb"
 import { dateFormatter } from "@/lib/formatter"
 import { getBillboardsByStoreId } from "@/actions/billboard"
 
