@@ -33,7 +33,12 @@ export const getProductByStoreId = async ({
     }
   })
 
-  return products
+  const productsFormatted = products.map(product => ({
+    ...product,
+    price: product.price / 100
+  }))
+
+  return productsFormatted
 }
 
 interface GetProductByIdProps {
@@ -61,5 +66,10 @@ export const getProductById = async ({
     },
   })
 
-  return product
+  if (!product) return null
+
+  return {
+    ...product,
+    price: product.price / 100
+  }
 }
