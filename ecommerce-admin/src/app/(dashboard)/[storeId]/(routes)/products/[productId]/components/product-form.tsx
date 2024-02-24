@@ -118,7 +118,7 @@ export const ProductForm = ({
       setIsOpen(false)
     }
   }
-  console.log("Cheguei")
+
   return (
     <>
       <AlertModal
