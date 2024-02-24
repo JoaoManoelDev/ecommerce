@@ -1,5 +1,9 @@
 import type { Metadata } from "next"
 import { Urbanist } from "next/font/google"
+
+import { Footer } from "@/components/footer"
+import { Navbar } from "@/components/navbar/index"
+
 import "@/styles/globals.css"
 
 const urbanist = Urbanist({ subsets: ["latin"] })
@@ -16,7 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pr-br">
-      <body className={urbanist.className}>{children}</body>
+      <body className={urbanist.className}>
+        <Navbar />
+          {children}
+        <Footer />
+      </body>
     </html>
   )
 }
