@@ -9,132 +9,129 @@ datasource db {
 }
 
 model Store {
-  id         String   @id @default(uuid())
-  name       String
-  user_id    String
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  id        String   @id @default(uuid())
+  name      String
+  userId    String   @map("user_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   billboards Billboard[] @relation("StoreToBillboard")
-  category   Category[]  @relation("StoreToCategory")
-  size       Size[]      @relation("StoreToSize")
-  color      Color[]     @relation("StoreToColor")
-  store      Product[]   @relation("StoreToProduct")
-  order      Order[]     @relation("StoreToOrder")
+  categories Category[]  @relation("StoreToCategory")
+  sizes      Size[]      @relation("StoreToSize")
+  colors     Color[]     @relation("StoreToColor")
+  stores     Product[]   @relation("StoreToProduct")
+  orders     Order[]     @relation("StoreToOrder")
 
   @@map("store")
 }
 
 model Billboard {
-  id         String   @id @default(uuid())
-  label      String
-  image_url  String
-  store_id   String
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  id        String   @id @default(uuid())
+  label     String
+  imageUrl  String   @map("image_url")
+  store     Store    @relation("StoreToBillboard", fields: [storeId], references: [id])
+  storeId   String   @map("store_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
-  store      Store      @relation("StoreToBillboard", fields: [store_id], references: [id])
   categories Category[] @relation("BillboardToCategory")
 
-  @@index([store_id])
+  @@index([storeId])
   @@map("billboard")
 }
 
 model Category {
-  id           String   @id @default(uuid())
-  name         String
-  store_id     String
-  billboard_id String
-  created_at   DateTime @default(now())
-  updated_at   DateTime @updatedAt
+  id          String    @id @default(uuid())
+  name        String
+  store       Store     @relation("StoreToCategory", fields: [storeId], references: [id])
+  storeId     String    @map("store_id")
+  billboard   Billboard @relation("BillboardToCategory", fields: [billboardId], references: [id])
+  billboardId String    @map("billboard_id")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
 
-  store     Store     @relation("StoreToCategory", fields: [store_id], references: [id])
-  billboard Billboard @relation("BillboardToCategory", fields: [billboard_id], references: [id])
-  product   Product[] @relation("CategoryToProduct")
+  products Product[] @relation("CategoryToProduct")
 
-  @@index([store_id])
-  @@index([billboard_id])
+  @@index([storeId])
+  @@index([billboardId])
   @@map("category")
 }
 
 model Size {
-  id         String   @id @default(uuid())
-  name       String
-  value      String
-  store_id   String
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  id        String   @id @default(uuid())
+  name      String
+  value     String
+  store     Store    @relation("StoreToSize", fields: [storeId], references: [id])
+  storeId   String   @map("store_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
-  store   Store     @relation("StoreToSize", fields: [store_id], references: [id])
-  product Product[] @relation()
+  products Product[] @relation("SizeToProduct")
 
-  @@index([store_id])
+  @@index([storeId])
   @@map("size")
 }
 
 model Color {
-  id         String   @id @default(uuid())
-  name       String
-  value      String
-  store_id   String
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  id        String   @id @default(uuid())
+  name      String
+  value     String
+  store     Store    @relation("StoreToColor", fields: [storeId], references: [id])
+  storeId   String   @map("store_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
-  store   Store     @relation("StoreToColor", fields: [store_id], references: [id])
-  product Product[] @relation()
+  products Product[] @relation("ColorToProduct")
 
-  @@index([store_id])
+  @@index([storeId])
   @@map("color")
 }
 
 model Product {
-  id          String   @id @default(uuid())
-  name        String
-  price       Int
-  is_featured Boolean  @default(false)
-  is_archived Boolean  @default(false)
-  store_id    String
-  category_id String
-  size_id     String
-  color_id    String
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
+  id         String   @id @default(uuid())
+  name       String
+  price      Int
+  isFeatured Boolean  @default(false) @map("is_featured")
+  isArchived Boolean  @default(false) @map("is_archived")
+  store      Store    @relation("StoreToProduct", fields: [storeId], references: [id])
+  storeId    String   @map("store_id")
+  category   Category @relation("CategoryToProduct", fields: [categoryId], references: [id])
+  categoryId String   @map("category_id")
+  size       Size     @relation("SizeToProduct", fields: [sizeId], references: [id])
+  sizeId     String   @map("size_id")
+  color      Color    @relation("ColorToProduct", fields: [colorId], references: [id])
+  colorId    String   @map("color_id")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
 
-  store    Store    @relation("StoreToProduct", fields: [store_id], references: [id])
-  category Category @relation("CategoryToProduct", fields: [category_id], references: [id])
-  size     Size     @relation(fields: [size_id], references: [id])
-  color    Color    @relation(fields: [color_id], references: [id])
+  images     Image[]     @relation("ProductToImage")
+  orderItems OrderItem[] @relation("ProductToOrderItem")
 
-  image     Image[]
-  orderItem OrderItem[]
-
-  @@index([color_id])
-  @@index([size_id])
-  @@index([category_id])
-  @@index([store_id])
-  @@map("products")
+  @@index([colorId])
+  @@index([sizeId])
+  @@index([categoryId])
+  @@index([storeId])
+  @@map("product")
 }
 
 model Image {
-  id         String   @id @default(uuid())
-  product_id String
-  url        String
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  id        String   @id @default(uuid())
+  product   Product  @relation("ProductToImage", fields: [productId], references: [id], onDelete: Cascade)
+  productId String   @map("product_id")
+  url       String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
-  product Product @relation(fields: [product_id], references: [id], onDelete: Cascade)
-
-  @@index([product_id])
+  @@index([productId])
   @@map("image")
 }
 
 model OrderItem {
-  id        String @id @default(uuid())
-  orderId   String
-  productId String
-
-  product Product @relation(fields: [productId], references: [id])
-  order   Order   @relation(fields: [orderId], references: [id])
+  id        String  @id @default(uuid())
+  order     Order   @relation("ProductToOrder", fields: [orderId], references: [id])
+  orderId   String  @map("order_id")
+  product   Product @relation("ProductToOrderItem", fields: [productId], references: [id])
+  productId String  @map("product_id")
 
   @@index([orderId])
   @@index([productId])
@@ -142,17 +139,17 @@ model OrderItem {
 }
 
 model Order {
-  id          String      @id @default(uuid())
-  store_id    String
-  order_items OrderItem[]
-  isPaid      Boolean
-  phone       String      @default("")
-  address     String      @default("")
-  created_at  DateTime    @default(now())
-  updated_at  DateTime    @updatedAt
+  id        String   @id @default(uuid())
+  store     Store    @relation("StoreToOrder", fields: [storeId], references: [id])
+  storeId   String   @map("store_id")
+  isPaid    Boolean  @map("is_paid")
+  phone     String   @default("")
+  address   String   @default("")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
-  store Store @relation("StoreToOrder", fields: [store_id], references: [id])
+  orderItems OrderItem[] @relation("ProductToOrder")
 
-  @@index([store_id])
+  @@index([storeId])
   @@map("order")
 }
