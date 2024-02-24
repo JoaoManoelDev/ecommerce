@@ -15,8 +15,6 @@ interface ProductCardProps {
 export const ProductCard = ({
   product
 }: ProductCardProps) => {
-  console.log("MEU PRODUTO", product)
-
   return (
     <Card className="group relative cursor-pointer w-full">
       <Image
