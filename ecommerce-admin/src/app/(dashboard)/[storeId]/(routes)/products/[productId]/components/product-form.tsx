@@ -226,7 +226,7 @@ export const ProductForm = ({
                       <SelectTrigger>
                         <SelectValue
                           defaultValue={field.value}
-                          placeholder="Selecione um outdoor"
+                          placeholder="Selecione uma categoria"
                         />
                       </SelectTrigger>
                     </FormControl>
