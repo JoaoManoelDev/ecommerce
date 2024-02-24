@@ -23,7 +23,7 @@ export async function GET(
         id: params.productId,
       },
       include: {
-        image: true,
+        images: true,
         category: true,
         size: true,
         color: true
@@ -71,7 +71,7 @@ export async function PATCH(
     const storeExists = prismadb.store.findFirst({
       where: {
         id: params.storeId,
-        user_id: userId
+        userId
       }
     })
 
@@ -86,13 +86,13 @@ export async function PATCH(
       data: {
         name,
         price: priceInCents,
-        category_id: categoryId,
-        color_id: colorId,
-        size_id: sizeId,
-        is_archived: isArchived,
-        is_featured: isFeatured,
-        store_id: params.storeId,
-        image: {
+        categoryId: categoryId,
+        colorId: colorId,
+        sizeId: sizeId,
+        isArchived: isArchived,
+        isFeatured: isFeatured,
+        storeId: params.storeId,
+        images: {
           deleteMany: {}
         }
       }
@@ -103,7 +103,7 @@ export async function PATCH(
         id: params.productId
       },
       data: {
-        image: {
+        images: {
           createMany: {
             data: [
               ...images.map(image => image)
@@ -135,7 +135,7 @@ export async function DELETE(
     const storeExists = prismadb.store.findFirst({
       where: {
         id: params.storeId,
-        user_id: userId
+        userId
       }
     })
 

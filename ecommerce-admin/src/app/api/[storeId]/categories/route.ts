@@ -24,7 +24,7 @@ export async function POST(
     const storeExists = await prismadb.store.findFirst({
       where: {
         id: params.storeId,
-        user_id: userId
+        userId
       }
     })
 
@@ -43,8 +43,8 @@ export async function POST(
     const newCategory = await prismadb.category.create({
       data: {
         name,
-        store_id: params.storeId,
-        billboard_id: billboardId,
+        billboardId,
+        storeId: params.storeId,
       }
     })
 
@@ -65,7 +65,7 @@ export async function GET(
 
     const categories = await prismadb.category.findMany({
       where: {
-        store_id: params.storeId
+        storeId: params.storeId
       }
     })
 

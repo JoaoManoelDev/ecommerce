@@ -5,7 +5,7 @@ import { prismadb } from "@/lib/prismadb"
 interface getCategoriesByStoreIdProps {
   storeId: string,
   includes?: {
-    product?: boolean
+    products?: boolean
     store?: boolean
     billboard?: boolean
   }
@@ -14,24 +14,24 @@ interface getCategoriesByStoreIdProps {
 export const getCategoriesByStoreId = async ({
   storeId,
   includes = {
-    product: false,
+    products: false,
     store: false,
     billboard: false
   }
 }: getCategoriesByStoreIdProps) => {
-  const { billboard, product, store } = includes
+  const { billboard, products, store } = includes
 
   const categories = await prismadb.category.findMany({
     where: {
-      store_id: storeId
+      storeId
     },
     include: {
       billboard,
-      product,
+      products,
       store
     },
     orderBy: {
-      created_at: "desc"
+      createdAt: "desc"
     }
   })
 

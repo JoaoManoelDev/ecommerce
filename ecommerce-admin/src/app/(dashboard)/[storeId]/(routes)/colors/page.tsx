@@ -19,7 +19,7 @@ export default async function ColorsPage({
     id: color.id,
     name: color.name,
     value: color.value,
-    createdAt: dateFormatter(color.created_at)
+    createdAt: dateFormatter(color.createdAt)
   }))
 
   return (

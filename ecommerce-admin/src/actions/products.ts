@@ -21,7 +21,7 @@ export const getProductByStoreId = async ({
 
   const products = await prismadb.product.findMany({
     where: {
-      store_id: storeId
+      storeId
     },
     include: {
       category,
@@ -29,7 +29,7 @@ export const getProductByStoreId = async ({
       size
     },
     orderBy: {
-      created_at: "desc"
+      createdAt: "desc"
     }
   })
 
@@ -39,25 +39,25 @@ export const getProductByStoreId = async ({
 interface GetProductByIdProps {
   productId: string
   includes?: {
-    image?: boolean
+    images?: boolean
   }
 }
 
 export const getProductById = async ({
   productId,
   includes = {
-    image: false,
+    images: false,
 
   }
 }: GetProductByIdProps) => {
-  const { image } = includes
+  const { images } = includes
 
   const product = await prismadb.product.findUnique({
     where: {
       id: productId
     },
     include: {
-      image
+      images
     },
   })
 

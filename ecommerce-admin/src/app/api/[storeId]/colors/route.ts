@@ -24,7 +24,7 @@ export async function POST(
     const storeExists = await prismadb.store.findFirst({
       where: {
         id: params.storeId,
-        user_id: userId
+        userId
       }
     })
 
@@ -44,7 +44,7 @@ export async function POST(
       data: {
         name,
         value,
-        store_id: params.storeId,
+        storeId: params.storeId,
       }
     })
 
@@ -65,7 +65,7 @@ export async function GET(
 
     const colors = await prismadb.color.findMany({
       where: {
-        store_id: params.storeId
+        storeId: params.storeId
       }
     })
 

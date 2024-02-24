@@ -25,7 +25,7 @@ export async function POST(
     const storeExists = await prismadb.store.findFirst({
       where: {
         id: params.storeId,
-        user_id: userId
+        userId
       },
     })
 
@@ -56,13 +56,13 @@ export async function POST(
       data: {
         name,
         price: priceInCents,
-        category_id: categoryId,
-        color_id: colorId,
-        size_id: sizeId,
-        is_archived: isArchived,
-        is_featured: isFeatured,
-        store_id: params.storeId,
-        image: {
+        categoryId: categoryId,
+        colorId: colorId,
+        sizeId: sizeId,
+        isArchived: isArchived,
+        isFeatured: isFeatured,
+        storeId: params.storeId,
+        images: {
           createMany: {
             data: [
               ...images.map(image=> image)
@@ -96,14 +96,14 @@ export async function GET(
 
     const products = await prismadb.product.findMany({
       where: {
-        store_id: params.storeId,
-        category_id: categoryId,
-        color_id: colorId,
-        size_id: sizeId,
-        is_featured: isFeatured ? true : undefined
+        storeId: params.storeId,
+        categoryId: categoryId,
+        colorId: colorId,
+        sizeId:sizeId,
+        isFeatured: isFeatured ? true : undefined
     },
       include: {
-        image: true
+        images: true
       }
     })
 

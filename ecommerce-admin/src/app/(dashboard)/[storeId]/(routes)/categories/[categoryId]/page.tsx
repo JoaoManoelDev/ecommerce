@@ -20,7 +20,7 @@ export default async function CategoryPageWithId({
 
   const initialData = category ? {
     name: category.name,
-    billboardId: category.billboard_id
+    billboardId: category.billboardId
   } : null
 
   const billboards = await getBillboardsByStoreId(params.storeId)
@@ -28,10 +28,10 @@ export default async function CategoryPageWithId({
   const billboardsFormatted = billboards.map<Billboard>((billboard) => ({
     id: billboard.id,
     label: billboard.label,
-    imageUrl: billboard.image_url,
-    storeId: billboard.store_id,
-    createdAt: billboard.created_at,
-    updatedAt: billboard.updated_at
+    imageUrl: billboard.imageUrl,
+    storeId: billboard.storeId,
+    createdAt: billboard.createdAt,
+    updatedAt: billboard.updatedAt
   }))
 
   return (

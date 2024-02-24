@@ -5,7 +5,7 @@ import { prismadb } from "@/lib/prismadb"
 export const getColorsByStoreId = async (storeId: string) => {
   const colors = await prismadb.color.findMany({
     where: {
-      store_id: storeId
+      storeId
     }
   })
 

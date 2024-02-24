@@ -15,7 +15,7 @@ export const getStoreById = async (storeId: string) => {
 export const getStoreByUserId = async (userId: string) => {
   const store = await prismadb.store.findFirst({
     where: {
-      user_id: userId
+      userId
     }
   })
 
@@ -26,7 +26,7 @@ export const getStoreByIdAndUserId = async (storeId: string, userId: string) => 
   const store = await prismadb.store.findFirst({
     where: {
       id: storeId,
-      user_id: userId
+      userId
     }
   })
 

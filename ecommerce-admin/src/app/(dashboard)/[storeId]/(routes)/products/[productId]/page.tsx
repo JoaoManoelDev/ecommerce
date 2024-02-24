@@ -20,7 +20,7 @@ export default async function ProductPage({
   const product = await getProductById({
     productId: params.productId,
     includes: {
-      image: true
+      images: true
     }
   })
 
@@ -30,12 +30,12 @@ export default async function ProductPage({
     data = {
       name: product.name,
       price: product.price,
-      categoryId: product.category_id,
-      colorId: product.color_id,
-      sizeId: product.size_id,
-      isArchived: product.is_archived,
-      isFeatured: product.is_featured,
-      images: product.image.map(image => ({ url: image.url }))
+      categoryId: product.categoryId,
+      colorId: product.colorId,
+      sizeId: product.sizeId,
+      isArchived: product.isArchived,
+      isFeatured: product.isFeatured,
+      images: product.images.map(image => ({ url: image.url }))
     } as ProductInput
   }
 

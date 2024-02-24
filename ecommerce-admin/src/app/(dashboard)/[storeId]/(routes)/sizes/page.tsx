@@ -19,7 +19,7 @@ export default async function SizesPage({
     id: size.id,
     name: size.name,
     value: size.value,
-    createdAt: dateFormatter(size.created_at)
+    createdAt: dateFormatter(size.createdAt)
   }))
 
   return (

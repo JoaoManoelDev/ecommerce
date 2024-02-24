@@ -3,7 +3,7 @@ import { prismadb } from "@/lib/prismadb"
 export const getSizesByStoreId = async (storeId: string) => {
   const sizes = await prismadb.size.findMany({
     where: {
-      store_id: storeId
+      storeId
     }
   })
 

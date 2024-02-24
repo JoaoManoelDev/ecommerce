@@ -5,10 +5,10 @@ import { prismadb } from "@/lib/prismadb"
 export const getBillboardsByStoreId = async (storeId: string) => {
   const billboards = prismadb.billboard.findMany({
     where: {
-      store_id: storeId
+      storeId
     },
     orderBy: {
-      created_at: "desc"
+      createdAt: "desc"
     }
   })
 

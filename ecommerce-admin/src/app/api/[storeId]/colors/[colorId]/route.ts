@@ -56,7 +56,7 @@ export async function PATCH(
     const storeExists = prismadb.store.findFirst({
       where: {
         id: params.storeId,
-        user_id: userId
+        userId
       }
     })
 
@@ -94,7 +94,7 @@ export async function DELETE(
     const storeExists = prismadb.store.findFirst({
       where: {
         id: params.storeId,
-        user_id: userId
+        userId
       }
     })
 

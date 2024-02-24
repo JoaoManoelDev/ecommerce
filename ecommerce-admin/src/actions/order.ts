@@ -9,17 +9,17 @@ export const getOrdersByStoryId = async ({
 }: GetOrdersByStoryIdProps) => {
   const order = await prismadb.order.findMany({
     where: {
-      store_id: storeId
+      storeId
     },
     include: {
-      order_items: {
+      orderItems: {
         include: {
           product: true
         }
       }
     },
     orderBy: {
-      created_at: "desc"
+      createdAt: "desc"
     }
   })
 

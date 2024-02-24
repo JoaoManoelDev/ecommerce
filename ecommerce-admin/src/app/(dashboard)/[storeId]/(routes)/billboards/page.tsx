@@ -18,7 +18,7 @@ export default async function BillboardsPage({
   const formattedBillboards: BillboardColumn[] = billboards.map((billboard) => ({
     id: billboard.id,
     label: billboard.label,
-    createdAt: dateFormatter(billboard.created_at)
+    createdAt: dateFormatter(billboard.createdAt)
   }))
 
   return (
