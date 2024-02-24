@@ -6,7 +6,7 @@ import { ptBR } from "@clerk/localizations"
 import { ModalProvider } from "@/providers/modal-provider"
 import { ToasterProvider } from "@/providers/toast-provider"
 
-import "../styles/globals.css"
+import "@/styles/globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
 
