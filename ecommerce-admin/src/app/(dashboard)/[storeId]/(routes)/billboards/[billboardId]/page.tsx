@@ -17,7 +17,7 @@ export default async function BillboardPage({
   if (billboard) {
     data = {
       label: billboard?.label,
-      imageUrl: billboard?.image_url
+      imageUrl: billboard?.imageUrl
     }
   }
 
