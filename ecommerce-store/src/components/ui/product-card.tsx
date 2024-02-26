@@ -18,7 +18,7 @@ export const ProductCard = ({
   return (
     <Card className="group relative cursor-pointer w-full">
       <Image
-        src={product?.image?.[0]?.url}
+        src={product?.images?.[0]?.url}
         alt={`imagem do ${product.name}`}
         className="aspect-square object-cover rounded-t-md w-full"
         width={200}
@@ -38,7 +38,7 @@ export const ProductCard = ({
       </div>
 
       <CardContent className="p-2">
-        <p className="text-lg font-semibold">{product.name}</p>
+        <p className="text-lg font-semibold text-ellipsis overflow-hidden text-nowrap">{product.name}</p>
         <p className="text-lg font-semibold">{product.category?.name}</p>
         <div className="flex items-center">
           <p>{priceFormatter(product.price)}</p>
