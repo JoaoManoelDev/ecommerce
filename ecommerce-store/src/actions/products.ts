@@ -33,3 +33,14 @@ export const getProducts = async (query?: Query):Promise<Product[]> => {
 
   return formattedProducts
 }
+
+export const getProduct = async (productId: string):Promise<Product> => {
+  const response = await fetch(`${URL}/${productId}`)
+
+  const product: Product = await response.json()
+  
+  return {
+    ...product,
+    price: product.price / 100
+  }
+}
