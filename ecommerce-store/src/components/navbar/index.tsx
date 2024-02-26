@@ -9,7 +9,7 @@ export const Navbar = async () => {
   const categories = await getCategories()
 
   return (
-    <div className="border-b h-16 px-4">
+    <div className="border-b h-16">
       <Container className="flex gap-x-8 items-center h-full">
         <p className="font-bold text-2xl uppercase">Store</p>
         <NavbarContent data={categories} />
