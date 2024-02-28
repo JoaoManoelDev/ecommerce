@@ -16,12 +16,10 @@ export const NavbarContent = ({
 }: NavbarContentProps) => {
   const pathname = usePathname()
 
-  // TODO: CREATE CORRECT LOGIC TO ROUTES
-
   const routes = data?.map(route => ({
     href: `/category/${route.id}`,
     label: route.name,
-    active: RegExp(`^/category(?:/.*)?$`).test(pathname),
+    active: RegExp(`^/category(?:/${route.id})?$`).test(pathname),
   }))
 
   return (
