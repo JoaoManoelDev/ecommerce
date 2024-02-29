@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 import { auth } from "@clerk/nextjs"
 
 import { prismadb } from "@/lib/prismadb"
@@ -11,17 +11,34 @@ interface RouteParams {
   }
 }
 
+interface ObjectStrings {
+  [chave: string]: boolean;
+}
+
 export async function GET(
-  _request: Request,
+  request: NextRequest,
   { params }: RouteParams
 ) {
   try {
     if (!params.categoryId) NextResponse.json({ message: "Category id is required" }, { status: 400 })
 
+    const searchParams = request.nextUrl.searchParams
+    const query = searchParams.get("include")
+
+    const values = query?.split(',')
+
+    const include = values?.reduce((acc, value) => {
+
+      acc[value] = true
+      
+      return acc 
+    }, {} as ObjectStrings);
+
     const category = await prismadb.category.findUnique({
       where: {
         id: params.categoryId,
-      }
+      },
+      include: include
     })
 
     return NextResponse.json(category, { status: 200 })
