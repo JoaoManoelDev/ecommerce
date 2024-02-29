@@ -7,3 +7,14 @@ export const getCategories = async (): Promise<Category[]> => {
 
   return response.json()
 }
+
+interface GetCategoryProps {
+  categoryId: string
+  include?: string[]
+}
+
+export const getCategory = async ({ categoryId, include }: GetCategoryProps): Promise<Category> => {
+  const response = await fetch(`${URL}/${categoryId}?include=${[include]}`)
+
+  return response.json()
+}
