@@ -45,4 +45,16 @@
   html {
     @apply h-full;
   }
+
+  *::-webkit-scrollbar {
+    width: 9px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    @apply bg-secondary
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-lg
+  }
 }
