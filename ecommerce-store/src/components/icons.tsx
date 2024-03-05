@@ -3,7 +3,9 @@ import {
   Expand,
   ShoppingBasket,
   ArrowLeft,
-  ArrowRight
+  ArrowRight,
+  Plus,
+  X
 } from "lucide-react"
 
 export const Icons = {
@@ -11,5 +13,7 @@ export const Icons = {
   expand: Expand,
   shoppingCart: ShoppingBasket,
   arrowLeft: ArrowLeft,
-  arrowRight: ArrowRight
+  arrowRight: ArrowRight,
+  plus: Plus,
+  x: X,
 }
