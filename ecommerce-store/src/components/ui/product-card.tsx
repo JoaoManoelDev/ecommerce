@@ -11,12 +11,10 @@ interface ProductCardProps {
   product: Product
 }
 
-export const ProductCard = ({
-  product
-}: ProductCardProps) => {
+export const ProductCard = ({ product }: ProductCardProps) => {
   return (
-    <Link href={`/product/${product.id}`}>
-      <Card className="group relative cursor-pointer w-full">
+    <Card className="w-full">
+      <Link href={`/product/${product.id}`} className="cursor-pointer">
         <Image
           src={product?.images?.[0]?.url}
           alt={`imagem do ${product.name}`}
@@ -24,19 +22,6 @@ export const ProductCard = ({
           width={200}
           height={200}
         />
-
-        <div
-          className="flex justify-center opacity-0 group-hover:opacity-100
-          absolute transition bottom-32 left-20 h-fit"
-        >
-          <Button
-            size="icon"
-            className="rounded-full hover:scale-110 transition"
-            variant="secondary"
-          >
-            <Icons.expand className="w-4 h-4" />
-          </Button>
-        </div>
 
         <CardContent className="p-2">
           <p
@@ -50,14 +35,14 @@ export const ProductCard = ({
             <p className="font-semibold">{priceFormatter(product.price)}</p>
           </div>
         </CardContent>
+      </Link>
 
-        <CardFooter className="p-2">
-          <Button className="flex items-center gap-2 w-full">
-            <Icons.shoppingCart className="w-4 h-4" />
-            <span>Adicionar</span>
-          </Button>
-        </CardFooter>
-      </Card>
-    </Link>
+      <CardFooter className="p-2">
+        <Button className="flex items-center gap-2 w-full">
+          <Icons.shoppingCart className="w-4 h-4" />
+          <span>Adicionar</span>
+        </Button>
+      </CardFooter>
+    </Card>
   )
 }
