@@ -3,6 +3,7 @@ import { Urbanist } from "next/font/google"
 
 import { Footer } from "@/components/footer"
 import { Navbar } from "@/components/navbar/index"
+import { ToastProvider } from "@/providers/toast-provider"
 
 import "@/styles/globals.css"
 
@@ -21,8 +22,9 @@ export default function RootLayout({
   return (
     <html lang="pr-br">
       <body className={urbanist.className}>
+        <ToastProvider />
         <Navbar />
-          {children}
+        {children}
         <Footer />
       </body>
     </html>
