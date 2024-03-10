@@ -103,7 +103,9 @@ export async function GET(
         isFeatured: isFeatured ? true : undefined
     },
       include: {
-        images: true
+        images: true,
+        color: true,
+        size: true
       },
       orderBy: {
         createdAt: "desc"
