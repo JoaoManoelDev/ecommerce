@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 
@@ -6,12 +8,17 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Product } from "@/entities/product"
 import { priceFormatter } from "@/lib/formatter"
+import { useCart } from "@/hooks/use-cart"
 
 interface ProductCardProps {
   product: Product
 }
 
 export const ProductCard = ({ product }: ProductCardProps) => {
+  const cart = useCart()
+  
+  const onAddProductToCart = () => cart.addProduct(product)
+  
   return (
     <Card className="w-full">
       <Link href={`/product/${product.id}`} className="cursor-pointer">
@@ -38,7 +45,10 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       </Link>
 
       <CardFooter className="p-2">
-        <Button className="flex items-center gap-2 w-full">
+        <Button
+          onClick={onAddProductToCart}
+          className="flex items-center gap-2 w-full"
+        >
           <Icons.shoppingCart className="w-4 h-4" />
           <span>Adicionar</span>
         </Button>
