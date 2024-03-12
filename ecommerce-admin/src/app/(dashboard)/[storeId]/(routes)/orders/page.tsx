@@ -21,7 +21,7 @@ export default async function OrdersPage({
     address: order.address,
     products: order.orderItems.map(orderItem => orderItem.product.name).join(', '),
     totalPrice: priceFormatter(order.orderItems.reduce((total, order) => {
-      return total + order.product.price
+      return total + (order.product.price / 100)
     }, 0)),
     createdAt: dateFormatter(order.createdAt),
     isPaid: order.isPaid
