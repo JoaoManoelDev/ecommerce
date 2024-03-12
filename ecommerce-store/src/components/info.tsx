@@ -1,8 +1,11 @@
+"use client"
+
 import { Product } from "@/entities/product"
 import { Icons } from "@/components/icons"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import { priceFormatter } from "@/lib/formatter"
+import { useCart } from "@/hooks/use-cart"
 
 interface InfoProps {
   product: Product
@@ -11,6 +14,12 @@ interface InfoProps {
 export const Info = ({
   product
 }: InfoProps) => {
+  const cart = useCart()
+
+  const onAddProduct = () => {
+    cart.addProduct(product)
+  }
+
   return (
     <section
       aria-label="Informações do produto escolhido"
@@ -45,8 +54,8 @@ export const Info = ({
         </div>
       </div>
 
-      <div className="flex items-center gap-x-3 mt-8">
-        <Button className="font-semibold gap-x-1">
+      <div className="flex items-center gap-x-3 mt-8" onClick={onAddProduct}>
+        <Button className="font-semibold gap-x-1" >
           <Icons.shoppingCart className="w-6 h-6" />
           <span>Adicionar</span>
         </Button>
