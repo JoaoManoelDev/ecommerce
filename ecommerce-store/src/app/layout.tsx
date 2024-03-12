@@ -4,6 +4,7 @@ import { Urbanist } from "next/font/google"
 import { Footer } from "@/components/footer"
 import { Navbar } from "@/components/navbar/index"
 import { ToastProvider } from "@/providers/toast-provider"
+import { cn } from "@/lib/utils"
 
 import "@/styles/globals.css"
 
@@ -21,11 +22,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pr-br">
-      <body className={urbanist.className}>
+      <body className={cn(urbanist.className, "flex flex-col justify-between")}>
         <ToastProvider />
-        <Navbar />
-        {children}
-        <Footer />
+        <div>
+          <Navbar />
+          {children}
+        </div>
+
+        <div>
+          <Footer />
+        </div>
       </body>
     </html>
   )
