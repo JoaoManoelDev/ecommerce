@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import { NavbarContent } from "./content"
 import { NavbarActions } from "./actions"
 import { Container } from "@/components/ui/container"
@@ -11,7 +13,7 @@ export const Navbar = async () => {
   return (
     <div className="border-b h-16">
       <Container className="flex gap-x-8 items-center h-full">
-        <p className="font-bold text-2xl uppercase">Store</p>
+        <Link href="/" className="font-bold text-2xl uppercase">Store</Link>
         <NavbarContent data={categories} />
         <NavbarActions />
       </Container>
