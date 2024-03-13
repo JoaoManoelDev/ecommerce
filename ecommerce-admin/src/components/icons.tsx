@@ -13,7 +13,10 @@ import {
   Edit,
   Search,
   ChevronRight,
-  Circle
+  Circle,
+  DollarSign,
+  CreditCard,
+  Package
 } from "lucide-react"
 
 export const Icons = {
@@ -31,5 +34,8 @@ export const Icons = {
   edit: Edit,
   search: Search,
   chevronRight: ChevronRight,
-  circle: Circle
+  circle: Circle,
+  dollar: DollarSign,
+  creditCard: CreditCard,
+  package: Package
 }
